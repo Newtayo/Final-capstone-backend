@@ -1,4 +1,4 @@
-class Api::V1:: LaptopsController < ApplicationController
+class Api::V1::LaptopsController < ApplicationController
   protect_from_forgery with: :null_session
   skip_before_action :verify_authenticity_token
 
@@ -56,5 +56,5 @@ class Api::V1:: LaptopsController < ApplicationController
 
   def laptop_params
     params.require(:laptop).permit(:name, :description, :image_url, :price, :model_year, :rom_size, :ram_size)
-  end 
+  end
 end
