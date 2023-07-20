@@ -2,7 +2,10 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :laptop
 
+  validates :user_id, presence: true
+  validates :laptop_id, presence: true
+  validates :date, presence: true
   validates :city, presence: true
-  validates :duration_of_hire, presence: true
-  validates :date_of_reservation, presence: true
+  validates :hour, presence: true
+  validates :laptop_id, uniqueness: { scope: %i[date hour] }
 end
