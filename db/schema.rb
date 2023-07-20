@@ -10,34 +10,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_13_124423) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_20_034312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "laptops", force: :cascade do |t|
     t.string "name"
     t.text "description"
-    t.string "image_url"
-    t.decimal "price"
-    t.integer "model_year"
+    t.string "photo_url"
+    t.string "model_year"
+    t.integer "price"
     t.string "rom_size"
     t.string "ram_size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["photo_url"], name: "index_laptops_on_photo_url", unique: true
   end
 
   create_table "reservations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "laptop_id"
     t.string "city"
-    t.integer "duration_of_hire"
-    t.date "date_of_reservation"
+    t.date "date"
+    t.string "hour"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["laptop_id", "date", "hour"], name: "index_reservations_on_laptop_id_and_date_and_hour", unique: true
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "reservations", "laptops", on_delete: :cascade
+  add_foreign_key "reservations", "users", on_delete: :cascade
 end
