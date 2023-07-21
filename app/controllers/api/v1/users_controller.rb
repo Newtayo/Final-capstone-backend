@@ -4,44 +4,30 @@ class Api::V1::UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def login
-    # Check if user is available
-    user = User.find_by(name: params[:name])
-    if user.nil?
-      render status: 403, json: { message: 'Login failure,User does not exist.', status: 403 }
+    @username = user_params[:username]
+    @user = User.find_by(username: @username)
+    if @user
+      render json: { message: 'Welcome back.', logged_in: true, reservations: @user.reservations, user: @user },
+             status: :ok
     else
-      render status: 200, json: { message: 'Login success', status: 200, data: user }
+      render json: { message: 'User not found.', logged_in: false }, status: :not_found
     end
   end
 
-  def index
-    @users = User.all.order(:id)
-    render json: @users
-  end
-
-  def register
-    user = User.find_by(name: params[:name])
-
-    if user.nil?
-      user = User.new(name: params[:name])
-
-      if user.save
-        render status: 201,
-               json: { message: 'User is registered successfuly.', id: user.id, name: user.name, status: 201 }
-      else
-        render status: 500, json: { message: 'Something went wrong please try again later.', status: 500 }
-      end
+  def signup
+    @username = user_params[:username]
+    @user = User.new(username: @username)
+    if @user.valid?
+      @user.save
+      render json: { message: 'User has been created successfully!!', logged_in: true, user: @user }, status: :created
     else
-      render status: 200, json: { message: 'User already exists.', id: user.id, name: user.name, status: 200 }
+      render json: { message: 'Something went wrong.', logged_in: false }, status: :not_acceptable
     end
   end
 
-  def reservations
-    user = User.find_by(id: params[:id])
-    if user.nil?
-      render status: :not_found, json: { message: 'User could not be found', status: :not_found }
-    else
-      reservations = Reservation.where(user_id: params[:id])
-      render status: :ok, json: { message: 'Reservation successfully found', data: reservations, status: :ok }
-    end
+  private
+
+  def user_params
+    params.require(:user).permit(:username)
   end
 end

@@ -131,6 +131,12 @@ To start the app, run the following command in your terminal:
 - Twitter: [@Harrynoqs](https://twitter.com/noqsnoq1)
 - LinkedIn: [harrisonw-njuguna](https://linkedin.com/in/harrisonw-njuguna)
 
+👤 **Harrison Njuguna**
+
+- GitHub: [@Harrynoqs](https://github.com/Harrynoqs)
+- Twitter: [@Harrynoqs](https://twitter.com/noqsnoq1)
+- LinkedIn: [harrisonw-njuguna](https://linkedin.com/in/harrisonw-njuguna)
+
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
