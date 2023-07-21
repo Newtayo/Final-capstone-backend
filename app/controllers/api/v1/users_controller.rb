@@ -1,9 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-  # CSRF Token Validations SKIP
-  protect_from_forgery with: :null_session
-  skip_before_action :verify_authenticity_token
-
-  def login
+   def login
     @username = user_params[:username]
     @user = User.find_by(username: @username)
     if @user

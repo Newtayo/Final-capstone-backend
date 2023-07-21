@@ -1,10 +1,5 @@
 class Api::V1::LaptopsController < ApplicationController
-  protect_from_forgery with: :null_session
-  skip_before_action :verify_authenticity_token
-
-  before_action :set_laptop, only: %i[show update destroy]
-
-  def index
+  index
     @laptops = Laptop.all
     render json: @laptops
   end

@@ -1,8 +1,4 @@
 class Api::V1::ReservationsController < ApplicationController
-  # CSRF Token Validations SKIP
-  protect_from_forgery with: :null_session
-  skip_before_action :verify_authenticity_token
-
   def destroy
     @reservation = Reservation.find_by(id: params[:id])
     if @reservation
