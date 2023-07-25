@@ -3,7 +3,7 @@ class Laptop < ApplicationRecord
   has_many :users, through: :reservations
 
   validates :name, presence: true
-  validates :description, length: { in: 20..120 }
+  validates :description, presence: true
   validates :photo_url, presence: true
   validates :model_year, presence: true
   validates :price, presence: true
