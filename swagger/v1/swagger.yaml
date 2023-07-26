@@ -1,0 +1,137 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/reservation/":
+    post:
+      summary: Creates a reservation
+      tags:
+      - Laptops
+      parameters: []
+      responses:
+        '201':
+          description: Reservation created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                laptop_id:
+                  type: string
+                city:
+                  type: string
+                date:
+                  type: string
+                hour:
+                  type: number
+              required:
+              - city
+          application/xml:
+            schema:
+              type: object
+              properties:
+                user_id:
+                  type: string
+                laptop_id:
+                  type: string
+                city:
+                  type: string
+                date:
+                  type: string
+                hour:
+                  type: number
+              required:
+              - city
+  "/api/v1/signup":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
+  "/api/v1/laptops":
+    get:
+      summary: list laptops
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: Creates a laptops
+      tags:
+      - Laptops
+      parameters: []
+      responses:
+        '201':
+          description: Users created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                photo_url:
+                  type: string
+                model_year:
+                  type: number
+                price:
+                  type: number
+                rom_size:
+                  type: number
+                ram_size:
+                  type: number
+              required:
+              - name
+          application/xml:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                photo_url:
+                  type: string
+                model_year:
+                  type: number
+                price:
+                  type: number
+                rom_size:
+                  type: number
+                ram_size:
+                  type: number
+              required:
+              - name
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: 127.0.0.1:3000

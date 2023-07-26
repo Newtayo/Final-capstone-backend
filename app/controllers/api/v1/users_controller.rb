@@ -1,5 +1,5 @@
 class Api::V1::UsersController < ApplicationController
-   def login
+  def login
     @username = user_params[:username]
     @user = User.find_by(username: @username)
     if @user
@@ -11,10 +11,13 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def signup
-    @username = user_params[:username]
-    @user = User.new(username: @username)
-    if @user.valid?
-      @user.save
+    # @username = user_params[:username]
+
+    @user = User.new(user_params)
+    puts '------------------------------'
+    puts @user.errors.full_messages
+    if @user.save
+
       render json: { message: 'User has been created successfully!!', logged_in: true, user: @user }, status: :created
     else
       render json: { message: 'Something went wrong.', logged_in: false }, status: :not_acceptable
