@@ -74,6 +74,33 @@ paths:
                   type: string
               required:
               - username
+  "/api/v1/login":
+    post:
+      summary: Creates a user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '201':
+          description: User created
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
+          application/xml:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+              required:
+              - username
   "/api/v1/laptops":
     get:
       summary: list laptops
