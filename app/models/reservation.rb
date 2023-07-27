@@ -7,5 +7,5 @@ class Reservation < ApplicationRecord
   validates :date, presence: true
   validates :city, presence: true
   validates :hour, presence: true
-  validates :laptop_id, uniqueness: { scope: %i[date hour] }
+  validates :laptop_id, presence: true
 end
