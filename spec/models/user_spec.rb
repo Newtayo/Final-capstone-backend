@@ -17,7 +17,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'should have a unique username' do
-      user1 = User.create(username: 'Queenter')
+      User.create(username: 'Queenter')
       user2 = User.create(username: 'Queenter')
       expect(user2).not_to be_valid
     end
