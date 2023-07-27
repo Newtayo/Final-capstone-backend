@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'laptops', type: :request do
-
   path '/api/v1/signup' do
     post 'Creates a user' do
       tags 'Users'
@@ -9,7 +8,7 @@ RSpec.describe 'laptops', type: :request do
       parameter name: :user, in: :body, schema: {
         type: :object,
         properties: {
-          username: { type: :string },
+          username: { type: :string }
         },
         required: ['username']
       }

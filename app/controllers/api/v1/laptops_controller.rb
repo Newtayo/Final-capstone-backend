@@ -1,5 +1,5 @@
 class Api::V1::LaptopsController < ApplicationController
-  index
+  def index
     @laptops = Laptop.all
     render json: @laptops
   end
@@ -29,6 +29,6 @@ class Api::V1::LaptopsController < ApplicationController
   private
 
   def laptop_params
-    params.require(:laptop).permit(:name, :description,:photo_url, :model_year, :price, :rom_size, :ram_size)
+    params.require(:laptop).permit(:name, :description, :photo_url, :model_year, :price, :rom_size, :ram_size)
   end
 end
