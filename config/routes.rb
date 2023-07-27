@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   post 'api/v1/login', to: 'api/v1/users#login'
   post 'api/v1/signup', to: 'api/v1/users#signup'
   delete 'api/v1/reservation/:id', to: 'reservations#destroy'
-  post 'api/v1/reservation/', to: 'reservations#create'
+  post 'api/v1/reservations/', to: 'reservations#create'
+  get 'api/v1/reservations/', to: 'api/v1/reservations#index'
 
 end
