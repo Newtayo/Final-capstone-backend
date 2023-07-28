@@ -16,31 +16,31 @@ RSpec.describe Reservation, type: :model do
     end
 
     before do
-      Reservation.create(user: user, laptop: laptop, date: Date.today, city: 'New York', hour: '09:00 AM')
+      Reservation.create(user:, laptop:, date: Date.today, city: 'New York', hour: '09:00 AM')
     end
 
     it 'should belong to a user' do
-      reservation = Reservation.new(user: nil, laptop: laptop, date: Date.today, city: 'New York', hour: '09:00 AM')
+      reservation = Reservation.new(user: nil, laptop:, date: Date.today, city: 'New York', hour: '09:00 AM')
       expect(reservation).not_to be_valid
     end
 
     it 'should belong to a laptop' do
-      reservation = Reservation.new(user: user, laptop: nil, date: Date.today, city: 'New York', hour: '09:00 AM')
+      reservation = Reservation.new(user:, laptop: nil, date: Date.today, city: 'New York', hour: '09:00 AM')
       expect(reservation).not_to be_valid
     end
 
     it 'should have a date' do
-      reservation = Reservation.new(user: user, laptop: laptop, date: nil, city: 'New York', hour: '09:00 AM')
+      reservation = Reservation.new(user:, laptop:, date: nil, city: 'New York', hour: '09:00 AM')
       expect(reservation).not_to be_valid
     end
 
     it 'should have a city' do
-      reservation = Reservation.new(user: user, laptop: laptop, date: Date.today, city: nil, hour: '09:00 AM')
+      reservation = Reservation.new(user:, laptop:, date: Date.today, city: nil, hour: '09:00 AM')
       expect(reservation).not_to be_valid
     end
 
     it 'should have an hour' do
-      reservation = Reservation.new(user: user, laptop: laptop, date: Date.today, city: 'New York', hour: nil)
+      reservation = Reservation.new(user:, laptop:, date: Date.today, city: 'New York', hour: nil)
       expect(reservation).not_to be_valid
     end
   end
